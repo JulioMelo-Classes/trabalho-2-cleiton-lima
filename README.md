@@ -12,13 +12,26 @@ Existe um executor que faz a interpretação dos comandos e executa o método co
 # Clone o projeto
 $ git clone https://github.com/JulioMelo-Classes/trabalho-2-cleiton-lima.git
 
-# Entre na pasta
+## Entre na pasta
 $ cd concordo
 
-# Compile o programa
-$ make
+## Para executar
 
-# Você pode rodar o sistema e em logo depois digitar os comandos seguidos de ENTER
-$ ./concordo ou make run
+Com cmake:
+```console
+mkdir build
+cd build
+cmake ..
+cmake --build .
+```
 
+## Para executar
+Você pode rodar o sistema e em logo depois digitar os comandos seguidos de ENTER
+```console
+./concordo
+```
+
+Ou pode criar um arquivo de texto com uma lista de comandos (um por linha) e executar o sistema redirecionando esse arquivo como entrada padrão:
+```console
+./concordo < script_comandos.txt
 ```
