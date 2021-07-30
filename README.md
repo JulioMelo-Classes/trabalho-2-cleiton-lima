@@ -10,7 +10,7 @@ Existe um executor que faz a interpretação dos comandos e executa o método co
 
 ```bash
 # Clone o projeto
-$ incluir nosso codigo github faltando 
+$ git clone https://github.com/JulioMelo-Classes/trabalho-2-cleiton-lima.git
 
 # Entre na pasta
 $ cd concordo
