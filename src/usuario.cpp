@@ -5,9 +5,9 @@ using namespace std;
 
 Usuario::Usuario() {
   id = 0;
-  name = "";
+  nome = "";
   email = "";
-  password = "";
+  senha = "";
 }
 
 Usuario::Usuario(const int pid, const string nome, const string pemail, const string psenha) {
