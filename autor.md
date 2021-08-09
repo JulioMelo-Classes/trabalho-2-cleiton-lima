@@ -11,12 +11,13 @@ Preencha os dados abaixo para identificar a autoria do trabalho.
 - [x] Criar server name
 - [x] Stats server 
 - [x] Mudar a descrição do servidor 
+- [x] criar classe mensagens 
+- [x] adicionar canais de texto 
+- [x] criar usuario
+- [x] atualizar sistema
 - [ ] 
 - [ ] 
 - [ ] 
-- [ ] 
-- [ ] 
-
 
 --------
 &copy; DIMAp/IMD/UFRN 2021.
