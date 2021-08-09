@@ -1,5 +1,5 @@
-#ifndef CHANNEL_H
-#define CHANNEL_H
+#ifndef CANAL_H
+#define CANAL_H
 #include <iostream>
 #include <vector>
 #include "mensagem.h"
