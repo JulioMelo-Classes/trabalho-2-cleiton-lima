@@ -5,7 +5,7 @@
 #include "mensagem.h"
 #include "usuario.h"
 
-enum channelType {
+enum tipocanal {
   TEXTO,
 
  class Canal {
@@ -16,7 +16,11 @@ enum channelType {
     virtual ~canal() {} /**< Destrutor de canal */
 
     std::string getNome() { return nome; } /**< Retorna o nome */
-
+  
+    virtual tipocanal gettipo() = 0; 
+    virtual void addMensagem(mensagem novaMensagem) = 0; 
+    virtual std::string printMensages(std::vector<usuario> usuarios) = 0; 
+    virtual std::vector<mensagem> getMensagens() = 0; 
   };
 
 
