@@ -14,7 +14,7 @@ Usuario::Usuario(const int pid, const string nome, const string pemail, const st
   id = pid;
   nome = pnome;
   email = pemail;
-  password = psenha;
+  senha = psenha;
 }
 
 Usuario::~Usuario() {
