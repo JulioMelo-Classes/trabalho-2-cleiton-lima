@@ -12,7 +12,7 @@ Usuario::Usuario() {
 
 Usuario::Usuario(const int pid, const string nome, const string pemail, const string psenha) {
   id = pid;
-  name = pnome;
+  nome = pnome;
   email = pemail;
   password = psenha;
 }
