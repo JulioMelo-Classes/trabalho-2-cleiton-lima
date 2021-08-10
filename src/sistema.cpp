@@ -24,7 +24,22 @@ string Sistema::create_user (const string email, const string senha, const strin
 }
 
 string Sistema::login(const string email, const string senha) {
-  return "login NÃO IMPLEMENTADO";
+  load();
+  vector<Usuario>::iterator it = usuarios.begin();
+  //**<Verifica se existe usuário com esse email e senha*/
+  while (it != usuarios.end()) {
+    if (it->getEmail() == email) {
+      if (it->getsenha() == senha) {
+        //**< Informa ao sistema o id do usuário online*/
+        loggedusuarioId = it->getId();
+        return "Logado com " + email;
+      }
+    }
+
+    it++;
+  }
+
+  return "Senha ou usuário inválidos!";
 }
 
 string Sistema::disconnect(int id) {
