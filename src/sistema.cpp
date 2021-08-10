@@ -29,9 +29,9 @@ string Sistema::login(const string email, const string senha) {
   //**<Verifica se existe usuário com esse email e senha*/
   while (it != usuarios.end()) {
     if (it->getEmail() == email) {
-      if (it->getsenha() == senha) {
+      if (it->getSenha() == senha) {
         //**< Informa ao sistema o id do usuário online*/
-        loggedusuarioId = it->getId();
+        loggedUsuarioId = it->getId();
         return "Logado com " + email;
       }
     }
@@ -69,8 +69,19 @@ string Sistema::create_server(int id, const string nome) {
 }
 
 string Sistema::set_server_desc(int id, const string nome, const string descricao) {
-  return "set_server_desc NÃO IMPLEMENTADO";
-}
+   load(); 
+  // Verifica se existe usuario logado
+  if (loggedUsuarioId == 0) {
+    return "Não está conectado";
+  }
+  vector<Servidor>::iterator it;
+  // verifica se ja ha um servidor com mesmo nome 
+  it = find_if(servidores.begin(), servidores.end(), [nome](Servidor servidor) {
+    return nome == servidor.getNome();
+  });
+  if (it != servidores.end()) {
+    return "ja existe um servidor com  esse nome ";
+  }
 
 string Sistema::set_server_invite_code(int id, const string nome, const string codigo) {
   return "set_server_invite_code NÃO IMPLEMENTADO";
