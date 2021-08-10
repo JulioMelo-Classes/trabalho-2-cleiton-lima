@@ -15,13 +15,25 @@ string Sistema::quit() {
 }
 
 string Sistema::create_user (const string email, const string senha, const string nome) {
-  load();
+  load(); 
   vector<Usuario>::iterator it = usuarios.begin();
   // **< Verifica se já existe usuário */ 
   while (it != usuarios.end()) {
     if (it->getEmail() == email) {
-  return "usuario ja existe";
+      return "usuario ja existe";
+    }
+    it++;
+  }
+
+  int id = usuarios.size() + 1; // Gera um id de forma automática de acordo como tamanho do vetor
+
+  // **< Cria um usuário novo adicionando-o no fim do vetor
+  Usuario newUsuario(id, nome, email, senha);
+  usuarios.push_back(newUsuario);
+  save();
+  return "O usuário foi criado";
 }
+
 
 string Sistema::login(const string email, const string senha) {
   load();
@@ -35,17 +47,15 @@ string Sistema::login(const string email, const string senha) {
         return "Logado com " + email;
       }
     }
-
     it++;
   }
-
-  return "Senha ou usuário inválidos!";
+  return "Usuário ou senha inválidos!";
 }
 
 string Sistema::disconnect(int id) {
     //**< Verifica se existe usuario logado/
   if (loggedUsuarioId == 0) {
-    return "você Não está conectado";
+    return "Você não está conectado";
   }
   vector<Usuario>::iterator it;
   //**< Obtem o usuario logado pelo id/
@@ -64,7 +74,8 @@ string Sistema::disconnect(int id) {
   return "Desconectando usuário " + it->getEmail();
 }
 
-string Sistema::create_server(int id, const string nome)  { load(); 
+string Sistema::create_server(int id, const string nome)  { 
+  load(); 
   // Verifica se existe usuario logado
   if (loggedUsuarioId == 0) {
     return "Não está conectado";
@@ -79,7 +90,32 @@ string Sistema::create_server(int id, const string nome)  { load();
   }
 
 string Sistema::set_server_desc(int id, const string nome, const string descricao) {
-  return "set_server_desc NÃO IMPLEMENTADO";
+  load();
+
+  if (loggedUsuarioId == 0) return "Não conectado"; // Verifica se há usuário existente logado
+
+  vector<Servidor>::iterator it;
+
+  // Verifica se há um servidor com o dito nome
+  it = find_if(servidores.begin(), servidores.end(), [nome](Servidor servidor)) {
+    return name = servidor.getNome();
+  });
+
+  if (it == servidores.end()) {
+    return "Servidor " + nome + " não encontrado";
+  }
+
+  // Verifica se o usuário que está logado é dono do servidor
+  if (it->getDono() != loggedUsuarioId) {
+    return "Você não criou este servidor, portanto não pode alterá-lo";
+  }
+
+  // Se tudo ocorrer bem, altera a descrição do servidor
+  it->setDescricao(descricao);
+  save();
+  return "A descrição do servidor " + name + " foi alterada";
+
+  
 }
 
 string Sistema::set_server_invite_code(int id, const string nome, const string codigo) {
