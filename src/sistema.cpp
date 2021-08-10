@@ -43,7 +43,25 @@ string Sistema::login(const string email, const string senha) {
 }
 
 string Sistema::disconnect(int id) {
-  return "disconnect NÃO IMPLEMENTADO";
+    //**< Verifica se existe usuario logado/
+  if (loggedUsuarioId == 0) {
+    return "você Não está conectado";
+  }
+  vector<Usuario>::iterator it;
+  //**< Obtem o usuario logado pelo id/
+  int targetId = loggedUsuarioId;
+  it = find_if(usuario.begin(), usuarios.end(), [targetId](Usuario usuario) {
+    return targetId == usuario.getId();
+  });
+
+  //**< Desconecta o usuário atual/
+  loggedUsuarioId = 0;
+
+  //**< Reseta o servidor e canal que ele estava visualizando/
+  connectedServidornome = "";
+  connectedCanalnome = "";
+
+  return "Desconectando usuário " + it->getEmail();
 }
 
 string Sistema::create_server(int id, const string nome) {
