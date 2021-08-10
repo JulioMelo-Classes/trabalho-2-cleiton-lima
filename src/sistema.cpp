@@ -64,12 +64,7 @@ string Sistema::disconnect(int id) {
   return "Desconectando usuário " + it->getEmail();
 }
 
-string Sistema::create_server(int id, const string nome) {
-  return "create_server NÃO IMPLEMENTADO";
-}
-
-string Sistema::set_server_desc(int id, const string nome, const string descricao) {
-   load(); 
+string Sistema::create_server(int id, const string nome)  { load(); 
   // Verifica se existe usuario logado
   if (loggedUsuarioId == 0) {
     return "Não está conectado";
@@ -82,6 +77,10 @@ string Sistema::set_server_desc(int id, const string nome, const string descrica
   if (it != servidores.end()) {
     return "ja existe um servidor com  esse nome ";
   }
+
+string Sistema::set_server_desc(int id, const string nome, const string descricao) {
+  return "set_server_desc NÃO IMPLEMENTADO";
+}
 
 string Sistema::set_server_invite_code(int id, const string nome, const string codigo) {
   return "set_server_invite_code NÃO IMPLEMENTADO";
