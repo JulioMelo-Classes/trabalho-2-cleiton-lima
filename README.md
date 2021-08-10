@@ -35,3 +35,13 @@ Ou pode criar um arquivo de texto com uma lista de comandos (um por linha) e exe
 ```console
 ./concordo < script_comandos.txt
 ```
+#### **create-user**
+Cadastra um novo usuário com as informações de nome, email e senha (caso não exista um usuário com o mesmo email). gera um ID automaticamente
+
+_Exemplo de entrada/saída:_
+```console
+create-user pedrinhocasahshow@protonmail.com  Somoslindos123 pedrinCS
+"Usuário criado"
+
+create-user pedrinhocasashow@protonmail.com Somoslindos123 pedrinCS
+"Usuário já existe!
