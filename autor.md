@@ -15,8 +15,10 @@ Preencha os dados abaixo para identificar a autoria do trabalho.
 - [x] adicionar canais de texto 
 - [x] criar usuario
 - [x] atualizar sistema
-- [ ] 
-- [ ] 
+- [x] atualizar readme 
+- [x] concertar .cpps
+- [x] concertar .h 
+- [x] utilizar metodos certos de commits
 - [ ] 
 
 --------
