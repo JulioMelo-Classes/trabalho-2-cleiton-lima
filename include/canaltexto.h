@@ -1,30 +1,25 @@
-#ifndef CANALTEXTO_H
-#define CANALTEXTO_H
-#include <iostream>
+#ifndef CANAL_TEXTO_H
+#define CANAL_TEXTO_H
+
 #include <vector>
 #include "mensagem.h"
-#include "usuario.h"
+#include "canal.h"
 
-enum canalType {
-  TEXT,
-  VOICE
-};
 
-/** Classe que representa canal */
-class canal {
-  protected:
-    std::string nome; /**< Nome do canal */
+// classe representante de canaltexto 
+class CanalTexto : public Canal {
+  private:
+    std::vector<Mensagem> mensagens; //<! vetor que Lista de mensagens de texto. 
   public:
-    canal(std::string _nome) { nome =_nome; } /**< Construtor parametrizado de canal */
-    virtual ~canal() {} /**< Destrutor de canal */
+    CanalTexto(std::string name); //<! Constructor de CanalTexto 
+    ~CanalTexto(); //<! Destrutor de CanalTexto
 
-    std::string getnome() { return nome; } /**< Retorna o nome */
+    tipoCanal  getTipo(); //<!retorna qual tipo de canal
+    std::vector<Mensagem> getMensagens(); //<! retorna o vetor de mensagens
 
-    virtual canalType getType() = 0; /**< Método virtual que retorna o tipo do canal */
-    virtual void addMensagem (mensagem newmensagem) = 0; /**< Método virtual que adiciona uma mensagem */
-    virtual std::string printMensagem(std::vector<usuario> usuarios) = 0; /**< Método virtual que retorna as mensagens formatadas na string */
-    virtual std::vector<mensagem> getMensagens() = 0; /**< Método virtual que retorna as mensagens */
+    void addMensagem(Mensagem novaMensagem); //<! Adiciona uma nova mensagem a lista
+    std::string printMensagens(std::vector<Usuario> usuarios); //<! Retorna a lista de mensagens formatadas em string
+    
 };
-
 
 #endif
