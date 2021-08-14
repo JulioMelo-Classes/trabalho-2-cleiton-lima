@@ -85,3 +85,17 @@ create-server contra-strike
 create-server contra-strike
 "Servidor com esse nome ja existe"
 ```
+#### **set-server-invite-code**
+Insere ou remove o código de convite de um servidor, se ele existir. porem necessário que o usuário logado seja o dono.
+
+_Exemplo de entrada/saída:_
+```console
+set-server-invite-code contra-strike
+"Código de convite do servidor 'contra-strike' modificado!"
+
+set-server-invite-code contra-strike
+"Código de convite do servidor 'contra-strike' removido!"
+
+set-server-invite-code servidor-inexistente 123
+"Servidor 'servidor-inexistente' não encontrado"
+```
