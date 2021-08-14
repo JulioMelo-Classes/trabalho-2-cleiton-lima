@@ -2,58 +2,63 @@
 #include "servidor.h"
 using namespace std;
 
+//<! Inicializa os atributos donoId, nome, descrição, codigodeConvite com valores nulos
 Servidor::Servidor() {
-  ownerId = 0;
-  name = "";
-  description = "";
-  invitationCode = "";
+  donoId = 0;
+  nome = "";
+  descrição = "";
+  codigodeConvite = "";
 }
 
 
 Servidor::Servidor(const int pdonoId, const string pnome) {
-  ownerId = pnodoId;
-  name = pnome;
-  description = "";
-  invitationCode = "";
+  donoId = pnodoId;
+  nome = pnome;
+  descricao = "";
+  codigodeConvite = "";
   memberIds.push_back(ownerId);
 }
 
 Servidor::~Servidor() {
 }
 
-int Servidor::getOwner() {
-  return ownerId;
+int Servidor::getDono() {
+  return donoId;
 }
 
-string Servidor::getName() {
-  return name;
+string Servidor::getNome() {
+  return nome;
 }
 
-string Servidor::getDescription() {
-  return description;
+string Servidor::getDescricao() {
+  return descricao;
 }
 
-string Servidor::getInvitationCode() {
-  return invitationCode;
+string Servidor::getCodigodeConvite() {
+  return codigodeConvite;
 }
 
-vector<int> Servidor::getMemberIds() {
-  return memberIds;
+vector<int> Servidor::getIdsMembro() {
+  return idsMembro;
 }
 
-void Servidor::setDescription(const string desc) {
-  description = desc;
+vector<Canal*> Servidor::getCanais() {
+  return canais;
 }
 
-void Servidor::setInvitationCode(const string code) {
-  invitationCode = code;
+void Servidor::setDescricao(const string desc) {
+  descricao = desc;
 }
 
-void Servidor::addMember(const int id) {
+void Servidor::setCodigodeConvite(const string codigo) {
+  codigodeconvite = codigo;
+}
+
+void Servidor::addMembro(const int id) {
   vector<int>::iterator it;
-  it = find(memberIds.begin(), memberIds.end(), id);
-  if (it == memberIds.end()) {
-    memberIds.push_back(id);
+  it = find(idsMembro.begin(), idsMembro.end(), id);
+  if (it == idsMembro.end()) {
+    idsMembro.push_back(id);
   }
 }
 
