@@ -24,6 +24,10 @@ string Mensagem::getConteudo() {
     return conteudo;
 }
 
+/*! Copia os atributos da mensagem por referência para a mensagem atual
+         @param m referência de objeto do tipo Mensagem.
+         @return referência para o objeto atual
+*/
 Mensagem& Mensagem::operator = (Mensagem const &msg) {
     dataHora = msg.dataHora;
     enviadaPor = msg.enviadaPor;
