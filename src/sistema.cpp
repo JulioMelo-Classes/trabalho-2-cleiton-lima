@@ -159,11 +159,32 @@ string  Sistema::set_server_invite_code (const string nome, const string codigo)
 /*! Percorre a lista de servidores imprimindo seus nomes num objeto ostringstream e retorna a conversão para string.
       @return uma string contendo a lista que possui todos os servidores do sistema. 
  */
-string Sistema::list_servers() {
-}
-
 string Sistema::remove_server(int id, const string nome) {
-  return "remove_server NÃO IMPLEMENTADO";
+	load();
+  //<! Verifica se existe usuario logado
+  if (loggedUsuarioId == 0) {
+    return "Não está conectado";
+  }
+  vector<Servidor>::iterator it;
+  //<! Verifica se existe um servidor com esse nome
+  it = find_if(servidores.begin(), servidores.end(), [name](Servidor servidor) {
+    return nome == server.getNome();
+  });
+  if (it == servidores.end()) {
+    return "o Servidor '" + nome + "' não encontrado";
+  }
+  //<! Verifica se o usuário logado é o dono
+  if (it->getDono() != loggedUsuarioId) {
+    return "Você não é dono(a) do servidor meu amiguinho(a) '" + name + "'";
+  }
+  //<! Se estiver tudo ok, remove o servidor do vector
+  servidores.erase(it);
+  save();
+  return " o Servidor '" + nome + "' foi removido";
+}
+	
+string Sistema::list_servers(int id ) {
+return "list_servers NÃO IMPLEMENTADO";	
 }
 
 string Sistema::enter_server(int id, const string nome, const string codigo) {
