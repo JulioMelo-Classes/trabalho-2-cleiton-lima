@@ -33,7 +33,7 @@ string CanalTexto ::printMensagens(vector<Usuario> usuarios) {
     ostringstream output;
 
     for (auto it = mensagems.begin(); it != mensagens.end(); ++it) {
-      string nome = usuarios[it->getEnviadopor() - 1].getNome();
+      string nome = usuarios[it->getEnviadaPor() - 1].getNome();
       string data = it->getDataHora();
       string conteudo = it->getConteudo();
 
