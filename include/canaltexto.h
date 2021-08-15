@@ -11,7 +11,7 @@ class CanalTexto : public Canal {
   private:
     std::vector<Mensagem> mensagens; //<! vetor que Lista de mensagens de texto. 
   public:
-    CanalTexto(std::string name); //<! Constructor de CanalTexto 
+    CanalTexto(std::string nome); //<! Constructor de CanalTexto 
     ~CanalTexto(); //<! Destrutor de CanalTexto
 
     tipoCanal  getTipo(); //<!retorna qual tipo de canal
