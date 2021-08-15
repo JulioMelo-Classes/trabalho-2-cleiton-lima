@@ -38,7 +38,80 @@ void Sistema::salvar() {
   salvarUsuarios();
   salvarServidores();
 }
+	
+  //<! Imprime no arquivo users.txt a quantidade de usuários, seguida dos atributos de cada usuário do sistema
+  void Sistema::salvarUsuarios() {
+  ofstream arquivoUsuario("users.txt");
+  //<! Verifica se o arquivo foi aberto
+  if (!arquivoUsuario) {
+    cerr << "O arquivo não foi aberto" << endl;
+    exit(1);
+  } else {
+    //<! Imprime a quantidade de usuários
+    arquivoUsuario << usuarios.size() << endl;
+    //<! Percorre o vetor de usuários imprimindo seus atributos no arquivo
+    for (auto it = usuarios.begin(); it != usuarios.end(); ++it) {
+      arquivoUsuario << it->getId() << endl;
+      arquivoUsuario << it->getNome() << endl;
+      arquivoUsuario << it->getEmail() << endl;
+      arquivoUsuario << it->getSenha() << endl;
+    }
 
+    //<! Fecha o arquivo
+    arquivoUsuario.close();
+  }
+}
+//<! Imprime no arquivo servidores.txt as informações de cada servidor do sistema 
+void Sistema::salvarServideores() {
+  ofstream arquivoServidor("servers.txt");
+  //<! Verifica se o arquivo foi aberto
+  if (!arquivoServidor) {
+    cerr << "O arquivo não foi aberto" << endl;
+    exit(1);
+  } else {
+    //<! Imprime a quantidade de servidores
+    arquivoServidor << servidores.size() << endl;
+
+    //<! Percorre o vetor de servidores
+    for (auto it = servidores.begin(); it != servidores.end(); ++it) {
+     arquivoServidor << it->getDono() << endl;
+     arquivoServidor << it->getNome() << endl;
+     arquivoServidor << it->getDescricao() << endl;
+     arquivoServidor << it->getCodigoConvite() << endl;
+
+      vector<int> idsMembro = it->getIdsMembro();
+      salvararquivo << idsMembro.size() << endl;
+      //<! Imprime os ids dos usuários participantes
+      for (auto id = idsMembro.begin(); id != idsMembro.end(); ++id) {
+        salvararquivo << *id << endl;
+      }
+
+      vector<Canal*> canais = it->getCanais();
+      arquivoServidor << canais.size() << endl;
+      //<! Imprime os atributos dos canais
+      for (auto c = canais.begin(); c != canais.end(); ++c) {
+        salvararquivo << (*c)->getNome() << endl;
+        string tipe = (*c)->getTipo() == TEXTO ? "TEXTO" : "VOZ";
+        salvararquivo << tipe << endl;
+
+        //<! Imprime a quantidade de mensagens
+        vector<Mensagem> mensagens = (*c)->getMensagens();
+        salvararquivo << mensagens.size() << endl;
+        //<! Imprime os atributos de cada mensagem
+        for (auto m = mensagens.begin(); m != mensagens.end(); ++m) {
+          salvararquivo << m->getEnviadaPor() << endl;
+          salvararquivo << m->getDataHora() << endl;
+          salvararquivo << m->getConteudo() << endl;
+        }
+      }
+    }
+
+    //<! Fecha o arquivo
+    salvararquivo.close();
+  }
+}
+	
+	
 // COMANDOS 
 string Sistema::sair() {
   return "Saindo...";
@@ -47,7 +120,7 @@ string Sistema::sair() {
 string  Sistema::create_user (const string email, const string senha, const string nome) {
   load(); 
   vector<Usuario>::iterator it = usuarios.begin();
-  //<! Verifica se já existe usuário com memso dados de email e retorna caso ele exista 
+  //<! Verifica se já existe usuário com mesmos dados de email e retorna caso se ele exista 
   while (it != usuarios.end()) {
     if (it->getEmail() == email) {
       return "usuario ja existe";
