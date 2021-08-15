@@ -15,9 +15,32 @@ struct tm* currentTime() {
 	time_t tt =  system_clock::to_time_t(system_clock::now());
 	return localtime(&tt);
 
+	/** Converte string para inteiro */
+int stringToInt(string s) {
+  int i;
+  stringstream sstream(s);
+  sstream >> i;
+  return i;
+}
+
+//<! Percorre a lista de servidores liberando a memória alocada para os seus canais
+Sistema::~Sistema() {
+  for (size_t i = 0; i < servidores.size(); ++i) {
+    vector<Canal*> canais = servidores[i].getCanais();
+    for (size_t j = 0; j < canais.size(); ++j) {
+      delete canais[j];
+    }
+  }
+}
+
+//<! Executa os métodos que salvam os dados nos arquivos txt */
+void Sistema::salvar() {
+  salvarUsuarios();
+  salvarServidores();
+}
 
 // COMANDOS 
-string Sistema::quit() {
+string Sistema::sair() {
   return "Saindo...";
 }
 
