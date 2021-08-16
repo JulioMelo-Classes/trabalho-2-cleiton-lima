@@ -33,6 +33,10 @@ Sistema::~Sistema() {
   }
 }
 
+bool Sistema::logar(int idUsuario) {
+  if(usuariosLogados.find(idUsuario) == usuariosLogados.end() ?  false :  true);
+};
+
 //<! Executa os métodos que salvam os dados nos arquivos txt */
 void Sistema::salvar() {
   salvarUsuarios();

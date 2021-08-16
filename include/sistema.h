@@ -20,6 +20,12 @@ class Sistema {
 
   public:
 
+		/*! Verifica se há usuário logado
+			   @param idUsuario Id para verificar se já há usuário logado
+		 */
+
+		bool logar(int idUsuario);
+
 		/*! Encerra o funcionamento do Concordo, o programa termina ao executar este comando.
 				@return uma string com a mensagem "Saindo.."
 		*/
