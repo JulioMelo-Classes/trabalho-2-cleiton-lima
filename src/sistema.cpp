@@ -14,7 +14,11 @@ using std::chrono::system_clock; // classe sistema de relogio
 struct tm* currentTime() {
 	time_t tt =  system_clock::to_time_t(system_clock::now());
 	return localtime(&tt);
+}
 
+bool Sistema::logar(int idUsuario) {
+  if(usuariosLogados.find(idUsuario) == usuariosLogados.end() ?  false :  true);
+}; 
 
 // COMANDOS 
 string Sistema::quit() {
@@ -22,7 +26,7 @@ string Sistema::quit() {
 }
 
 string  Sistema::create_user (const string email, const string senha, const string nome) {
-  load(); 
+
   vector<Usuario>::iterator it = usuarios.begin();
   /*! Verifica se já existe usuário com memso dados de email e retorna caso ele exista */
   while (it != usuarios.end()) {
@@ -33,25 +37,24 @@ string  Sistema::create_user (const string email, const string senha, const stri
   }
   /*! Gera um id de forma automática de acordo como tamanho do vetor */
   int id = usuarios.size() + 1;
- 
 
   /*! Cria um usuário novo adicionando-o no fim do vetor */ 
   Usuario newUsuario(id, nome, email, senha);
   usuarios.push_back(newUsuario);
-  save();
+  
   return "O usuário foi criado";
 }
 
 
 string Sistema::login(const string email, const string senha) {
-  load();
+  
   vector<Usuario>::iterator it = usuarios.begin();
   /*! Verifica se existe usuário com esses mesmos dados de email e senha */
   while (it != usuarios.end()) {
     if (it->getEmail() == email) {
       if (it->getSenha() == senha) {
         /*! Informa ao sistema o id do usuário online */
-        loggedUsuarioId = it->getId();
+        logar = it->getId();
         return "Logado com " + email;
       }
     }
@@ -83,7 +86,7 @@ string Sistema::disconnect(int id) {
 }
 
 string Sistema::create_server(int id, const string nome)  { 
-  load(); 
+  // load(); 
   /*! Verifica se existe usuario logado */
   if (loggedUsuarioId == 0) {
     return "Não está conectado";
@@ -96,9 +99,9 @@ string Sistema::create_server(int id, const string nome)  {
   if (it != servidores.end()) {
     return "ja existe um servidor com  esse nome ";
   }
-
+}
 string Sistema::set_server_desc(int id, const string nome, const string descricao) {
-  load();
+  // load();
   /*! Verifica se há usuário existente logado */
   if (loggedUsuarioId == 0) return "Não conectado"; 
 
@@ -127,7 +130,7 @@ string Sistema::set_server_desc(int id, const string nome, const string descrica
 }
 
 string  Sistema::set_server_invite_code (const string nome, const string codigo) {
-  load(); 
+  // load(); 
   /*! Verifica se existe usuario logado */
   if (loggedIdUsuario == 0) {
     return "voçê Não está conectado ;(";

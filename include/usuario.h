@@ -26,7 +26,7 @@ class Usuario {
     int getId(); //<! pega o id do usuário 
     std::string getNome(); //<! pega o nome do usuário 
     std::string getEmail(); //<! pega o email do usuário 
-    std::string getsenha(); //<! pega a senha do usuário 
+    std::string getSenha(); //<! pega a senha do usuário 
 };
 
 #endif
