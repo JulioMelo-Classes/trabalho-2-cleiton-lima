@@ -2,6 +2,9 @@
 #define MENSAGEM_H
 #include <iostream>
 
+/*
+Cp 2 ok
+*/
 // Classe que representa uma mensagem de texto 
 class Mensagem {
   private:

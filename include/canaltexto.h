@@ -5,7 +5,9 @@
 #include "mensagem.h"
 #include "canal.h"
 
-
+/*
+Cp2 ok
+*/
 // classe representante de canaltexto 
 class CanalTexto : public Canal {
   private:

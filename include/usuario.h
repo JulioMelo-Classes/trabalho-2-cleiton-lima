@@ -2,6 +2,7 @@
 #define Usuario_H
 #include <iostream>
 
+
 // Classe que representa o usuário do sistema 
 class Usuario {
   private:

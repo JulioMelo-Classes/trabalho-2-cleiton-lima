@@ -1,5 +1,11 @@
 
-
+<!--Infelizmente o código não compila, assim é realmente dificil eu avaliar
+Como vocês tentaram aproveitar o código do semestre passado, que era relativamente maior e um pouco mais complexo
+devido à parte de arquivos, acho que faltou de vocês um pouco de experiencia em como adaptar esse código. Claramente
+a classe sistema foi copiada do trabalho anterior usando até as variáveis locais connectedServidor/Canal nome, que faziam
+com que o sistema fosse monothread (só permitia um usuário por vez). Vou considerar apenas as classes Servidor, CanalTexto e Mensagem,
+mas como o projeto não está compilando veja que já é bastante coisa!
+-->
 ## Sobre
 
 Concordo é um sistema em C++ similar ao Discord, operado através de comandos de uma única linha, desenvolvido como atividade 02 para a disciplina de Linguagem de Programação I do curso Bacharelado em Tecnologia da Informação.

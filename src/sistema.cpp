@@ -14,6 +14,7 @@ using std::chrono::system_clock; //<! classe sistema de relogio
 struct tm* currentTime() {
 	time_t tt =  system_clock::to_time_t(system_clock::now());
 	return localtime(&tt);
+}
 
 	/** Converte string para inteiro */
 int stringToInt(string s) {
@@ -35,7 +36,7 @@ Sistema::~Sistema() {
 
 bool Sistema::logar(int idUsuario) {
   if(usuariosLogados.find(idUsuario) == usuariosLogados.end() ?  false :  true);
-};
+}
 
 //<! Executa os métodos que salvam os dados nos arquivos txt */
 void Sistema::salvar() {

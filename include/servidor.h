@@ -5,7 +5,9 @@
 #include <iostream>
 #include <canal.h>
 
-
+/*
+Vou considerar 50% uma vez que vocês não adaptaram para o projeto atual!
+*/
 // Classe que representa servidores do concordo 
 class Servidor {
   private:
