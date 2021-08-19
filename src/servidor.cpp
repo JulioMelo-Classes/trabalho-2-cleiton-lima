@@ -6,7 +6,7 @@ using namespace std;
 Servidor::Servidor() {
   donoId = 0;
   nome = "";
-  descrição = "";
+  descricao = "";
   codigodeConvite = "";
 }
 
